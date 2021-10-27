@@ -31,7 +31,6 @@ jobs:
         # uses: crazy-max/ghaction-github-pages@db4476a01402e1a7ce05f41832040eef16d14925
         uses: crazy-max/ghaction-github-pages@v2.5.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           # Git domain (default github.com)
           #domain: # optional, default is github.com
           # GitHub repository where assets will be deployed (default $GITHUB_REPOSITORY)
@@ -58,3 +57,5 @@ jobs:
           #dry_run: # optional, default is false
           # Enable verbose output
           #verbose: # optional, default is false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
