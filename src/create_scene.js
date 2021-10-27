@@ -55,7 +55,7 @@ class CreateScene extends Phaser.Scene {
             .setScale(0.25)
             .setInteractive({cursor: 'pointer'})
             .on("pointerup", () => {
-                this.scene.start('fight', {top: 'archer_head'})
+                this.scene.start('fight', {top: 'archerHead'})
         });
     }
 
