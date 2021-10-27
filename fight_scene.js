@@ -1,8 +1,12 @@
-class CreateScene extends Phaser.scene {
+class FightScene extends Phaser.Scene {
     constructor() {
         super({key: 'fight'});
     }
 
+    init (data) {
+        console.log('init', data);
+        this.playerHead = data.top;
+    }
 
     preload() {
         this.load.image('battle_background', 'assets/battle_background.png');
@@ -39,7 +43,8 @@ class CreateScene extends Phaser.scene {
 
         var playerLegs = this.add.image(this.cameras.main.width / 4, 490, 'archer_legs');
         var playerBody = this.add.image(this.cameras.main.width / 4, 440, 'archer_body');
-        var playerHead = this.add.image(this.cameras.main.width / 4, 330, 'archer_head');
+        var playerHead;
+        playerHead = this.add.image(this.cameras.main.width / 4, 330, data.top);
 
         var enemyLegs;
         enemyLegs = this.add.image((this.cameras.main.width / 4) * 3, 490, 'archer_legs');

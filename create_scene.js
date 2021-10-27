@@ -1,4 +1,4 @@
-class CreateScene extends Phaser.scene {
+class CreateScene extends Phaser.Scene {
     constructor() {
         super({key: 'create'});
     }
@@ -43,20 +43,20 @@ class CreateScene extends Phaser.scene {
         createSceneArrowRight3.setScale(0.40);
         createSceneArrowRight3.flipX = true;
 
-        let fightButton = this.add.image(this.cameras.main.width / 2, 675, 'fight_button');
-        fightButton
-            .setScale(0.25)
-            .setInteractive({cursor: 'pointer'})
-            .on("pointerup", () => {
-                this.scene.start('fight', this.selected)
-        });
-
         var archerHead;
         archerHead = this.add.image(this.cameras.main.width / 2, 300, 'archer_head');
         var archerBody;
         archerBody = this.add.image(this.cameras.main.width / 2, 440, 'archer_body');
         var archerLegs;
         archerLegs = this.add.image(this.cameras.main.width / 2, 580, 'archer_legs');
+
+        let fightButton = this.add.image(this.cameras.main.width / 2, 675, 'fight_button');
+        fightButton
+            .setScale(0.25)
+            .setInteractive({cursor: 'pointer'})
+            .on("pointerup", () => {
+                this.scene.start('fight', {top: this.archerHead})
+        });
     }
 
     update() {

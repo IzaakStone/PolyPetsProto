@@ -1,5 +1,5 @@
-import fight_scene from './fight_scene';
-import create_scene from './create_scene';
+import fight_scene from './fight_scene.js';
+import create_scene from './create_scene.js';
 
 let config = {
     type: Phaser.AUTO,
