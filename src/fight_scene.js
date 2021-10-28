@@ -43,8 +43,7 @@ class FightScene extends Phaser.Scene {
 
         var playerLegs = this.add.image(this.cameras.main.width / 4, 490, 'archer_legs');
         var playerBody = this.add.image(this.cameras.main.width / 4, 440, 'archer_body');
-        var playerHead;
-        this.add.image(this.cameras.main.width / 4, 330, playerHead);
+        var playerHeadImage = this.add.image(this.cameras.main.width / 4, 330, this.playerHead);
 
         var enemyLegs;
         enemyLegs = this.add.image((this.cameras.main.width / 4) * 3, 490, 'archer_legs');
