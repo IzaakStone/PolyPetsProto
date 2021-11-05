@@ -10,9 +10,14 @@ class CreateScene extends Phaser.Scene {
         this.load.image('archer_head', 'assets/archer_head.svg');
         this.load.image('archer_body', 'assets/archer_body.svg');
         this.load.image('archer_legs', 'assets/archer_legs.svg');
+        this.load.image('barbarian_head', 'assets/barbarian_head.svg');
+        this.load.image('barbarian_bdy', 'assets/barbarian_legs.svg');
+        this.load.image('barbarian_legs', 'assets/barbarian_legs.svg');
     }
 
     create() {
+        var top = 1, middle = 1, bottom = 1;
+
         this.cameras.main.setBackgroundColor(0xA3817A)
         var createSceneBackground;
         createSceneBackground = this.add.image(511.5, 383, 'create_background');
@@ -20,30 +25,62 @@ class CreateScene extends Phaser.Scene {
         var createSceneText;
         createSceneText = this.add.text(319, 97.5, 'CREATE', { fontFamily: 'GlueGun-GW8Z', fontSize: '100px', fill: '#000'});
 
-        var createSceneArrowLeft1;
-        createSceneArrowLeft1 = this.add.image(this.cameras.main.width / 4, 300, 'create_scene_arrow');
-        createSceneArrowLeft1.setScale(0.40);
-        var createSceneArrowLeft2;
-        createSceneArrowLeft2 = this.add.image(this.cameras.main.width / 4, 440, 'create_scene_arrow');
-        createSceneArrowLeft2.setScale(0.40);
-        var createSceneArrowLeft3;
-        createSceneArrowLeft3 = this.add.image(this.cameras.main.width / 4, 580, 'create_scene_arrow');
-        createSceneArrowLeft3.setScale(0.40);
+        let createSceneArrowLeft1 = this.add.image(this.cameras.main.width / 4, 300, 'create_scene_arrow');
+        createSceneArrowLeft1
+            .setScale(0.40)
+            .setInteractive({cursor: 'pointer'})
+            .on("pointerup", () => {
+                top--;
+        });
 
-        var createSceneArrowRight1;
-        createSceneArrowRight1 = this.add.image((this.cameras.main.width / 4) * 3, 300, 'create_scene_arrow');
-        createSceneArrowRight1.setScale(0.40);
+        var createSceneArrowLeft2 = this.add.image(this.cameras.main.width / 4, 440, 'create_scene_arrow');
+        createSceneArrowLeft2
+            .setScale(0.40)
+            .setInteractive({cursor: 'pointer'})
+            .on("pointerup", () => {
+                middle--;
+        });
+
+        var createSceneArrowLeft3 = this.add.image(this.cameras.main.width / 4, 580, 'create_scene_arrow');
+        createSceneArrowLeft3
+            .setScale(0.40)
+            .setInteractive({cursor: 'pointer'})
+            .on("pointerup", () => {
+                bottom--;
+        });
+
+        var createSceneArrowRight1 = this.add.image((this.cameras.main.width / 4) * 3, 300, 'create_scene_arrow');
         createSceneArrowRight1.flipX = true;
-        var createSceneArrowRight2;
-        createSceneArrowRight2 = this.add.image((this.cameras.main.width / 4) * 3, 440, 'create_scene_arrow');
-        createSceneArrowRight2.setScale(0.40);
-        createSceneArrowRight2.flipX = true;
-        var createSceneArrowRight3;
-        createSceneArrowRight3 = this.add.image((this.cameras.main.width / 4) * 3, 580, 'create_scene_arrow');
-        createSceneArrowRight3.setScale(0.40);
-        createSceneArrowRight3.flipX = true;
+        createSceneArrowRight1
+            .setScale(0.40)
+            .setInteractive({cursor: 'pointer'})
+            .on("pointerup", () => {
+                top++;
+        });
 
-        var archerHead = this.add.image(this.cameras.main.width / 2, 300, 'archer_head');
+        var createSceneArrowRight2 = this.add.image((this.cameras.main.width / 4) * 3, 440, 'create_scene_arrow');
+        createSceneArrowRight2.flipX = true;
+        createSceneArrowRight2
+            .setScale(0.40)
+            .setInteractive({cursor: 'pointer'})
+            .on("pointerup", () => {
+                middle++;
+        });
+
+        var createSceneArrowRight3 = this.add.image((this.cameras.main.width / 4) * 3, 580, 'create_scene_arrow');
+        createSceneArrowRight3.flipX = true;
+        createSceneArrowRight3
+            .setScale(0.40)
+            .setInteractive({cursor: 'pointer'})
+            .on("pointerup", () => {
+                middle++;
+        });
+
+        if (top == 1) {
+            var archerHead = this.add.image(this.cameras.main.width / 2, 300, 'archer_head');
+        } else if (top == 2) {
+            var barbarianHead = this.add.image(this.cameras.main.width / 2, 300, 'barbarian_head')
+        }
         var archerBody = this.add.image(this.cameras.main.width / 2, 440, 'archer_body');
         var archerLegs = this.add.image(this.cameras.main.width / 2, 580, 'archer_legs');
 
@@ -54,12 +91,6 @@ class CreateScene extends Phaser.Scene {
             .on("pointerup", () => {
                 this.scene.start('fight', {top: 'archer_head', middle: 'archer_body', bottom: 'archer_legs'})
         });
-
-        var top, middle, bottom;
-    }
-
-    nextPart() {
-
     }
 }
 
