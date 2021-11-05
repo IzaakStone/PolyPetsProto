@@ -6,6 +6,8 @@ class FightScene extends Phaser.Scene {
     init (data) {
         console.log('init', data);
         this.playerHead = data.top;
+        this.playerBody = data.middle;
+        this.playerLegs = data.bottom;
     }
 
     preload() {
@@ -21,12 +23,10 @@ class FightScene extends Phaser.Scene {
         battleSceneBackground = this.add.image(511.5, 383, 'battle_background');
 
         var playerBattleSceneHealth = this.add.text(10, 5, '100/100', {
-            fontFamily: 'GlueGun-GW8Z',
             fontSize: '50px',
             fill: '#000'
         });
-        var enemyBattleSceneHealth = this.add.text(846, 5, '100/100', {
-            fontFamily: 'GlueGun-GW8Z',
+        var enemyBattleSceneHealth = this.add.text(546, 5, '100/100', {
             fontSize: '50px',
             fill: '#000'
         });
@@ -41,8 +41,8 @@ class FightScene extends Phaser.Scene {
         ability4 = this.add.image(643, 720, 'bow_ability_icon');
         ability4.setScale(0.35);
 
-        var playerLegs = this.add.image(this.cameras.main.width / 4, 490, 'archer_legs');
-        var playerBody = this.add.image(this.cameras.main.width / 4, 440, 'archer_body');
+        var playerLegsImage = this.add.image(this.cameras.main.width / 4, 490, this.playerLegs);
+        var playerBodyImage = this.add.image(this.cameras.main.width / 4, 440, this.playerBody);
         var playerHeadImage = this.add.image(this.cameras.main.width / 4, 330, this.playerHead);
 
         var enemyLegs;
