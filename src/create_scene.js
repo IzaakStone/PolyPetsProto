@@ -76,11 +76,9 @@ class CreateScene extends Phaser.Scene {
                 middle++;
         });
 
-        if (top == 1) {
-            var archerHead = this.add.image(this.cameras.main.width / 2, 300, 'archer_head');
-        } else if (top == 2) {
-            var barbarianHead = this.add.image(this.cameras.main.width / 2, 300, 'barbarian_head')
-        }
+
+        var archerHead = this.add.image(this.cameras.main.width / 2, 300, 'archer_head');
+        var barbarianHead = this.add.image(this.cameras.main.width / 2, 300, 'barbarian_head')
         var archerBody = this.add.image(this.cameras.main.width / 2, 440, 'archer_body');
         var archerLegs = this.add.image(this.cameras.main.width / 2, 580, 'archer_legs');
 
